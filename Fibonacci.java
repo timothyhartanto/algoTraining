@@ -1,5 +1,7 @@
 package com.training.fibonacci;
 
+import java.math.BigDecimal;
+
 public class Fibonacci {
   static int curr = 1;
   static int prev = 0;
@@ -16,14 +18,11 @@ public class Fibonacci {
   }
   
   // will print the n-th sequence of fibonacci
-  public int recursiveFibonacciPrintNnumber(int n) {
-    if (n == 1) {
-      return 1;
-    } else if (n == 0) {
-      return 0;
+  public BigDecimal recursiveFibonacciPrintNnumber(int n, BigDecimal curr, BigDecimal next) {
+    if (n <= 0) {
+      return curr;
     } else {
-      int x = recursiveFibonacciPrintNnumber(n - 1) + recursiveFibonacciPrintNnumber(n - 2);
-      return x;
+      return recursiveFibonacciPrintNnumber(n - 1, next, curr.add(next));
     }
   }
   
