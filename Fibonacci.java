@@ -7,6 +7,7 @@ public class Fibonacci {
   static int prev = 0;
   static int next = 0;
 
+//   print out all sequences
   public static void recursiveFibonacci(int n) {
     if (n > 1) {
       next = curr + prev;
@@ -14,6 +15,24 @@ public class Fibonacci {
       curr = next;
       System.out.print(next + ", ");
       recursiveFibonacci(n - 1);
+    }
+  }
+  
+  static BigDecimal Bcurr = BigDecimal.ONE;
+  static BigDecimal Bprev = BigDecimal.ZERO;
+  static BigDecimal Bnext = BigDecimal.ZERO;
+  
+  // return n-th position of fibonacci number
+  public static BigDecimal recursiveFibonacci(int n) {
+    if (n > 2) {
+      Bnext = Bcurr.add(Bprev);
+      Bprev = Bcurr;
+      Bcurr = Bnext;
+      return recursiveFibonacci(n - 1);
+    } else if(n == 1) {
+      return BigDecimal.ZERO;
+    } else {
+      return Bcurr;
     }
   }
   
